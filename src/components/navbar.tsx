@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useTheme } from "next-themes"
-import { Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { gsap } from "gsap"
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { gsap } from "gsap";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -13,15 +13,15 @@ const navItems = [
   { name: "Projects", href: "#projects" },
   { name: "Experience", href: "#experience" },
   { name: "Contact", href: "#contact" },
-]
+];
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
 
     // Navbar animation
     gsap.fromTo(
@@ -33,26 +33,30 @@ export default function Navbar() {
         stagger: 0.1,
         duration: 0.8,
         ease: "power2.out",
-      },
-    )
+      }
+    );
 
-    gsap.fromTo(".logo", { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" })
-  }, [])
+    gsap.fromTo(
+      ".logo",
+      { x: -20, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+    );
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   const scrollToSection = (href: string) => {
-    setMobileMenuOpen(false)
-    const element = document.querySelector(href)
+    setMobileMenuOpen(false);
+    const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border h-15">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 logo">
@@ -68,23 +72,43 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection(item.href)
+                    e.preventDefault();
+                    scrollToSection(item.href);
                   }}
                   className="nav-item px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-primary transition-colors"
                 >
                   {item.name}
                 </a>
               ))}
-              <Button variant="ghost" size="icon" onClick={toggleTheme} className="nav-item" aria-label="Toggle theme">
-                {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="nav-item"
+                aria-label="Toggle theme"
+              >
+                {mounted && theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
               </Button>
             </div>
           </div>
 
           <div className="flex md:hidden">
-            <Button variant="ghost" size="icon" onClick={toggleTheme} className="mr-2" aria-label="Toggle theme">
-              {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="mr-2"
+              aria-label="Toggle theme"
+            >
+              {mounted && theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
@@ -92,5 +116,5 @@ export default function Navbar() {
 
       {/* Mobile menu dropdown - removed in favor of bottom navigation */}
     </nav>
-  )
+  );
 }
