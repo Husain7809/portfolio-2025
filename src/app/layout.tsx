@@ -7,9 +7,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Mohammad Husain | Software Engineer",
+  title: "Mohammad Husain | Software Engineer | Full-Stack Developer",
   description:
-    "Personal portfolio of Mohammad Husain, a skilled Software Engineer specializing in backend development with Node.js and Nest.js.",
+    "Experienced Software Engineer with 2+ years of expertise in MERN stack, microservices architecture, and cloud technologies. Specializing in building scalable, high-performance enterprise applications.",
 }
 
 export default function RootLayout({

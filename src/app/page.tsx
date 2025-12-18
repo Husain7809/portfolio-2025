@@ -51,12 +51,12 @@ export default function Home() {
   return (
     <div ref={mainRef} className="min-h-[calc(100vh-3.75rem)] bg-background">
       <Navbar />
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-0">
+      <main className="w-full">
         <Hero />
         <About />
+        <Experience />
         <Skills />
         <Projects />
-        <Experience />
         <Contact />
       </main>
       <Footer />

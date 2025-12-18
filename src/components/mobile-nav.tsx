@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { Home, User, Code, Briefcase, Mail } from "lucide-react"
+import { Home, User, Code, Briefcase, Mail, Award } from "lucide-react"
 import { gsap } from "gsap"
 
 interface NavItem {
@@ -15,8 +15,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { name: "Home", href: "#home", icon: <Home className="h-5 w-5" /> },
   { name: "About", href: "#about", icon: <User className="h-5 w-5" /> },
-  { name: "Projects", href: "#projects", icon: <Code className="h-5 w-5" /> },
   { name: "Experience", href: "#experience", icon: <Briefcase className="h-5 w-5" /> },
+  { name: "Skills", href: "#skills", icon: <Award className="h-5 w-5" /> },
+  { name: "Projects", href: "#projects", icon: <Code className="h-5 w-5" /> },
   { name: "Contact", href: "#contact", icon: <Mail className="h-5 w-5" /> },
 ]
 

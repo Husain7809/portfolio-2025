@@ -15,31 +15,60 @@ import { CalendarDays, MapPin } from "lucide-react";
 
 const experiences = [
   {
-    company: "Bytes Technolab",
-    role: "Software Engineer",
-    location: "Ahmedabad, India",
-    period: "03/2023 - Present",
+    company: "AeonX Digital",
+    role: "Software Engineer - MERN Stack Developer",
+    location: "Ahmedabad, Gujarat, India",
+    period: "September 2025 - Present",
     description:
-      "A leading software development company specializing in creating scalable applications",
+      "Developing comprehensive enterprise solutions with intelligent automation features using MERN stack",
     responsibilities: [
-      "Developed and maintained scalable and efficient RESTful and GraphQL APIs using Node.js, leveraging both Nest.js and Express.js frameworks.",
-      "Collaborated with frontend teams to seamlessly integrate APIs with React.js applications, improving user experience and overall system performance.",
-      "Designed and implemented dynamic, reusable React.js components, contributing to the development of interactive and responsive user interfaces.",
-      "Led backend development for key cross-industry projects, focusing on performance optimization, scalability, and maintainability.",
-      "Worked closely with frontend and DevOps teams to ensure smooth integration and deployment of backend services within modern web architecture.",
-      "Improved application efficiency and responsiveness by applying asynchronous programming patterns and best practices.",
-      "Took ownership of the end-to-end API lifecycle, including requirement gathering, system design, development, testing, and ongoing maintenance.",
+      "Developing comprehensive Procure-to-Pay solution with intelligent invoice automation using MERN stack",
+      "Building scalable backend APIs using Node.js and Express.js for purchase order management and invoice processing",
+      "Implementing React.js frontend components for supplier management, purchase requisitions, and approval workflows",
+      "Integrating AI-powered invoice automation features to streamline accounts payable processes",
+      "Designing MongoDB database schemas for vendor management, purchase orders, and invoice tracking",
+      "Collaborating with SAP and AWS teams to ensure seamless integration with enterprise systems",
+      "Implementing role-based access control (RBAC) for multi-level approval workflows",
+      "Optimizing application performance and ensuring scalability for enterprise-level operations",
     ],
     skills: [
+      "MERN Stack",
+      "Node.js",
+      "Express.js",
       "React.js",
+      "MongoDB",
+      "AWS",
+      "SAP Integration",
+      "RBAC",
+      "Invoice Automation",
+      "API Development",
+    ],
+  },
+  {
+    company: "Bytes Technolab",
+    role: "Software Engineer - Backend Developer",
+    location: "Ahmedabad, Gujarat, India",
+    period: "March 2023 - September 2025",
+    description:
+      "Led backend development for key projects across various industries, focusing on scalable, high-performance solutions",
+    responsibilities: [
+      "Developed and maintained RESTful APIs and GraphQL APIs using Node.js within NestJS and Express.js frameworks",
+      "Designed and implemented React.js components, collaborating with frontend teams to build dynamic user interfaces",
+      "Led development of key projects across various industries, focusing on scalable, high-performance backend solutions",
+      "Collaborated with frontend and DevOps teams to ensure seamless integration of backend services",
+      "Contributed to system efficiency enhancement by implementing asynchronous programming techniques",
+      "Managed end-to-end API development lifecycle from conceptualization to implementation and maintenance",
+    ],
+    skills: [
       "Node.js",
       "NestJS",
       "Express.js",
+      "React.js",
+      "GraphQL",
+      "RESTful APIs",
       "MongoDB",
       "PostgreSQL",
       "MySQL",
-      "GraphQL",
-      "RESTful APIs",
       "Microservices",
       "Redis",
       "Docker",
@@ -103,72 +132,83 @@ export default function Experience() {
     <section
       id="experience"
       ref={experienceRef}
-      className="section py-20 bg-muted/30"
+      className="section py-24 bg-gradient-to-b from-muted/30 to-background"
     >
-      <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center">
-          Work Experience
-        </h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
+            Professional Experience
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 text-lg">
+            Building enterprise solutions and driving technical excellence
+          </p>
 
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <Card key={index} className="experience-card border border-border">
-              <CardHeader>
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+          <div className="space-y-8">
+            {experiences.map((exp, index) => (
+              <Card key={index} className="experience-card border-2 border-border hover:border-primary/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                <CardHeader className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-b border-border">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                    <div>
+                      <CardTitle className="text-2xl md:text-3xl mb-2">{exp.role}</CardTitle>
+                      <CardDescription className="text-xl font-semibold text-primary">
+                        {exp.company}
+                      </CardDescription>
+                    </div>
+
+                    <div className="space-y-3 bg-card/50 rounded-lg p-4 border border-border">
+                      <div className="flex items-center gap-2 text-sm font-medium">
+                        <CalendarDays className="h-5 w-5 text-primary" />
+                        <span>{exp.period}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm font-medium">
+                        <MapPin className="h-5 w-5 text-primary" />
+                        <span>{exp.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+
+                <CardContent className="p-8 space-y-8">
+                  <p className="text-lg text-foreground leading-relaxed font-medium">{exp.description}</p>
+
                   <div>
-                    <CardTitle className="text-xl">{exp.role}</CardTitle>
-                    <CardDescription className="text-lg font-medium text-primary">
-                      {exp.company}
-                    </CardDescription>
+                    <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                      <span className="w-1 h-6 bg-primary rounded-full"></span>
+                      Key Achievements & Responsibilities
+                    </h4>
+                    <ul className="space-y-3">
+                      {exp.responsibilities.map((resp, respIndex) => (
+                        <li
+                          key={respIndex}
+                          className="responsibility-item flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                        >
+                          <span className="text-primary mt-1.5 font-bold text-lg">▸</span>
+                          <span className="text-foreground leading-relaxed">{resp}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CalendarDays className="h-4 w-4" />
-                      <span>{exp.period}</span>
+                  <div>
+                    <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                      <span className="w-1 h-6 bg-primary rounded-full"></span>
+                      Core Technologies & Tools
+                    </h4>
+                    <div className="flex flex-wrap gap-3">
+                      {exp.skills.map((skill, skillIndex) => (
+                        <Badge
+                          key={skillIndex}
+                          className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-4 py-2 text-sm font-medium"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4" />
-                      <span>{exp.location}</span>
-                    </div>
                   </div>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-6">
-                <p className="text-muted-foreground">{exp.description}</p>
-
-                <div>
-                  <h4 className="font-medium mb-3">Key Responsibilities:</h4>
-                  <ul className="space-y-2">
-                    {exp.responsibilities.map((resp, respIndex) => (
-                      <li
-                        key={respIndex}
-                        className="responsibility-item flex items-start gap-2"
-                      >
-                        <span className="text-primary mt-1">•</span>
-                        <span className="text-muted-foreground">{resp}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-medium mb-3">Technologies Used:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill, skillIndex) => (
-                      <Badge
-                        key={skillIndex}
-                        className="bg-primary/10 text-primary hover:bg-primary/20"
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>

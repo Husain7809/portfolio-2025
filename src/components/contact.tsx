@@ -98,171 +98,186 @@ export default function Contact() {
     <section
       id="contact"
       ref={contactRef}
-      className="section py-20 mb-16 md:mb-0"
+      className="section py-24 mb-16 md:mb-0 bg-gradient-to-b from-background to-muted/30"
     >
-      <div className="container mx-auto">
-        <h2 className="animate-item text-3xl font-bold mb-12 text-center">
-          Get In Touch
-        </h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="animate-item text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
+            Let's Connect
+          </h2>
+          <p className="animate-item text-center text-muted-foreground mb-16 text-lg">
+            Open to new opportunities and collaborations. Let's discuss how I can contribute to your team.
+          </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card className="animate-item border border-border">
-            <CardHeader>
-              <CardTitle>Contact Information</CardTitle>
-              <CardDescription>
-                Feel free to reach out through any of these channels
-              </CardDescription>
-            </CardHeader>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <Card className="animate-item border-2 border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-primary/50">
+              <CardHeader className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-b border-border">
+                <CardTitle className="text-2xl">Contact Information</CardTitle>
+                <CardDescription className="text-base">
+                  Reach out through any of these channels. I typically respond within 24 hours.
+                </CardDescription>
+              </CardHeader>
 
-            <CardContent className="space-y-6">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Phone className="h-5 w-5 text-primary" />
+              <CardContent className="p-8 space-y-8">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group">
+                    <div className="bg-primary/10 p-4 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <Phone className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground mb-1">Phone</p>
+                      <a href="tel:+919724073530" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
+                        +91 9724073530
+                      </a>
+                    </div>
                   </div>
+
+                  <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors group">
+                    <div className="bg-primary/10 p-4 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <Mail className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground mb-1">Email</p>
+                      <a href="mailto:mh.varaliya@gmail.com" className="text-lg font-semibold text-foreground hover:text-primary transition-colors break-all">
+                        mh.varaliya@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-6 border-t border-border">
+                  <h3 className="text-xl font-semibold mb-4">Professional Networks</h3>
+                  <div className="flex gap-4">
+                    <a
+                      href="https://www.linkedin.com/in/mohammad-husain-b23167206/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-icon bg-primary/10 p-4 rounded-full hover:bg-primary/20 transition-all duration-300 hover:scale-110"
+                      aria-label="LinkedIn Profile"
+                    >
+                      <Linkedin className="h-6 w-6 text-primary" />
+                    </a>
+                    <a
+                      href="https://github.com/husain7809"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-icon bg-primary/10 p-4 rounded-full hover:bg-primary/20 transition-all duration-300 hover:scale-110"
+                      aria-label="GitHub Profile"
+                    >
+                      <Github className="h-6 w-6 text-primary" />
+                    </a>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="animate-item border-2 border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-primary/50">
+              <CardHeader className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-b border-border">
+                <CardTitle className="text-2xl">Send a Message</CardTitle>
+                <CardDescription className="text-base">
+                  Have a project in mind or want to discuss opportunities? I'd love to hear from you.
+                </CardDescription>
+              </CardHeader>
+
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <p className="text-sm text-muted-foreground">Phone</p>
-                    <p className="font-medium">9724073530</p>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-semibold mb-2 text-foreground"
+                    >
+                      Full Name
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your full name"
+                      required
+                      className="h-12 border-2 focus:border-primary"
+                    />
                   </div>
-                </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium">mh.varaliya@gmail.com</p>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-semibold mb-2 text-foreground"
+                    >
+                      Email Address
+                    </label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your.email@example.com"
+                      required
+                      className="h-12 border-2 focus:border-primary"
+                    />
                   </div>
-                </div>
-              </div>
 
-              <div>
-                <h3 className="text-lg font-medium mb-3">Connect with me</h3>
-                <div className="flex gap-4">
-                  <a
-                    href="https://www.linkedin.com/in/mohammad-husain-b23167206/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon bg-primary/10 p-3 rounded-full hover:bg-primary/20 transition-colors"
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-semibold mb-2 text-foreground"
+                    >
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell me about your project or opportunity..."
+                      rows={6}
+                      required
+                      className="border-2 focus:border-primary resize-none"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-primary hover:bg-primary/90 text-white h-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    disabled={isSubmitting}
                   >
-                    <Linkedin className="h-5 w-5 text-primary" />
-                  </a>
-                  <a
-                    href="https://github.com/husain7809"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon bg-primary/10 p-3 rounded-full hover:bg-primary/20 transition-colors"
-                  >
-                    <Github className="h-5 w-5 text-primary" />
-                  </a>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="animate-item border border-border">
-            <CardHeader>
-              <CardTitle>Send a Message</CardTitle>
-              <CardDescription>
-                I'll get back to you as soon as possible
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-1"
-                  >
-                    Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-1"
-                  >
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Your email"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-1"
-                  >
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your message"
-                    rows={5}
-                    required
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-white"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center gap-2">
-                      <svg
-                        className="animate-spin h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      <Send className="h-4 w-4" />
-                      Send Message
-                    </span>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                    {isSubmitting ? (
+                      <span className="flex items-center gap-2">
+                        <svg
+                          className="animate-spin h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      <span className="flex items-center gap-2">
+                        <Send className="h-5 w-5" />
+                        Send Message
+                      </span>
+                    )}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

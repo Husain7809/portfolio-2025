@@ -2,14 +2,16 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
-import { FileDown } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+import { FileDown, Award, Target, TrendingUp } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const elements = aboutRef.current?.querySelectorAll(".animate-item");
 
     if (elements) {
@@ -32,75 +34,111 @@ export default function About() {
     }
   }, []);
 
+  const highlights = [
+    {
+      icon: <Award className="h-6 w-6" />,
+      title: "2+ Years Experience",
+      description: "Proven track record in full-stack development",
+    },
+    {
+      icon: <Target className="h-6 w-6" />,
+      title: "Scalable Solutions",
+      description: "Building high-performance enterprise applications",
+    },
+    {
+      icon: <TrendingUp className="h-6 w-6" />,
+      title: "Continuous Growth",
+      description: "Staying current with latest technologies and best practices",
+    },
+  ];
+
   return (
-    <section id="about" ref={aboutRef} className="section py-20">
-      <div className="container mx-auto">
-        <h2 className="animate-item text-3xl font-bold mb-12 text-center">
-          About Me
-        </h2>
+    <section id="about" ref={aboutRef} className="section py-24 bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="animate-item text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
+            About Me
+          </h2>
+          <p className="animate-item text-center text-muted-foreground mb-16 text-lg">
+            Passionate Software Engineer | Full-Stack Developer | Problem Solver
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="animate-item space-y-4 sm:space-y-6">
-            <p className="text-base sm:text-lg text-muted-foreground">
-              Skilled Software Engineer with 2+ years of experience specializing
-              in MERN stack. Proven ability to build scalable, high-performance
-              systems while collaborating with cross-functional teams.
-            </p>
-            <p className="text-base sm:text-lg text-muted-foreground">
-              Expertise in database management, system integration, and API
-              development, delivering efficient solutions that enhance
-              operational efficiency and system reliability.
-            </p>
-
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold">Education</h3>
-                <ul className="mt-2 space-y-2">
-                  <li>
-                    <p className="font-medium">
-                      Master of Computer Applications (MCA)
-                    </p>
-                    <p className="text-sm sm:text-base text-muted-foreground">
-                      Silver Oak University, Ahmedabad, Gujarat, India (09/2022
-                      - 07/2024)
-                    </p>
-                  </li>
-                  <li>
-                    <p className="font-medium">
-                      Bachelor of Computer Application (BCA)
-                    </p>
-                    <p className="text-sm sm:text-base text-muted-foreground">
-                      HNGU University, Gujarat, India (01/2019 - 01/2022)
-                    </p>
-                  </li>
-                </ul>
+          <div className="space-y-12">
+            <div className="animate-item">
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
+                  <strong>Full Stack Developer</strong> with <strong>2+ years of experience</strong> specializing in <strong>MERN stack development</strong> and backend engineering using Node.js, Express.js, and NestJS. Proven expertise in building scalable, high-performance applications across monolithic and microservices architectures.
+                </p>
+                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
+                  Skilled in developing <strong>RESTful and GraphQL APIs</strong>, integrating MongoDB and PostgreSQL databases, and implementing efficient data processing solutions. Experienced in <strong>AWS cloud services</strong> (EC2, S3), Docker containerization, and CI/CD workflows. Strong focus on system reliability, cloud-native development, and delivering production-grade software solutions.
+                </p>
+                <p className="text-lg md:text-xl text-foreground leading-relaxed">
+                  Throughout my career, I have successfully delivered enterprise-level solutions for diverse industries, including e-commerce, procurement systems, sports management, and service platforms. I excel at building robust backend systems, designing efficient APIs, and implementing microservices architectures that handle high traffic and complex business logic.
+                </p>
               </div>
             </div>
 
-            <Button
-              className="animate-item flex items-center gap-2 bg-primary hover:bg-primary/90 text-white"
-              onClick={() =>
-                window.open(
-                  "https://drive.google.com/file/d/1XctzxwjDRSHeNqOX-v6zEIVp1ubnbfSy/view?usp=sharing",
-                  "_blank"
-                )
-              }
-            >
-              <FileDown className="h-4 w-4" />
-              Download Resume
-            </Button>
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-item">
+              {highlights.map((highlight, index) => (
+                <Card key={index} className="border border-border hover:shadow-lg transition-all duration-300 hover:border-primary/50">
+                  <CardContent className="p-6 text-center">
+                    <div className="flex justify-center mb-4 text-primary">
+                      {highlight.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">{highlight.title}</h3>
+                    <p className="text-muted-foreground">{highlight.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
-          <div className="animate-item mt-6 md:mt-0">
-            <div className="relative rounded-lg overflow-hidden border border-border bg-card p-1 max-w-sm mx-auto md:max-w-none">
-              <div className="aspect-square rounded-lg overflow-hidden bg-muted">
-                <img
-                  src={profileImg.src}
-                  alt="Mohammad Husain"
-                  className="w-full h-full object-cover"
-                />
+            <div className="animate-item space-y-6">
+              <div className="bg-card border border-border rounded-lg p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+                  <Award className="h-6 w-6 text-primary" />
+                  Education & Qualifications
+                </h3>
+                <div className="space-y-6">
+                  <div className="border-l-4 border-primary pl-6">
+                    <h4 className="text-xl font-semibold mb-2">
+                      Master of Computer Applications (MCA)
+                    </h4>
+                    <p className="text-muted-foreground mb-1">
+                      HNGU University, Gujarat, India
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      January 2022 - July 2024
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-primary pl-6">
+                    <h4 className="text-xl font-semibold mb-2">
+                      Bachelor of Computer Application (BCA)
+                    </h4>
+                    <p className="text-muted-foreground mb-1">
+                      Silver Oak University, Ahmedabad, Gujarat, India
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      January 2019 - January 2022
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-lg"></div>
+            </div>
+
+            <div className="animate-item flex justify-center">
+              <Button
+                size="lg"
+                className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1XctzxwjDRSHeNqOX-v6zEIVp1ubnbfSy/view?usp=sharing",
+                    "_blank"
+                  )
+                }
+              >
+                <FileDown className="h-5 w-5" />
+                Download Resume
+              </Button>
             </div>
           </div>
         </div>

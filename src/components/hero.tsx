@@ -56,34 +56,64 @@ export default function Hero() {
     <section
       id="home"
       ref={heroRef}
-      className="section min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center text-center py-20 px-4"
+      className="section min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center text-center py-20 px-4 relative overflow-hidden"
     >
-      <div className="max-w-3xl mx-auto">
-        <h1 className="hero-name text-3xl sm:text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-500 text-transparent bg-clip-text">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 pointer-events-none"></div>
+      <div className="max-w-4xl mx-auto relative z-10">
+        <div className="mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            Software Engineer | Full-Stack Developer
+          </span>
+        </div>
+        <h1 className="hero-name text-4xl sm:text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-500 to-primary text-transparent bg-clip-text leading-tight">
           MOHAMMAD HUSAIN
         </h1>
-        <h2 className="hero-title text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-foreground">
-          Software Engineer
+        <h2 className="hero-title text-2xl sm:text-3xl md:text-4xl font-semibold mb-8 text-foreground">
+          Building Scalable Solutions for Modern Businesses
         </h2>
-        <p className="hero-description text-base sm:text-lg md:text-xl mb-8 text-muted-foreground max-w-2xl mx-auto">
-          Skilled full stack developer specializing in MERN with 2+ years of
-          experience building scalable, high-performance systems.
+        <p className="hero-description text-lg sm:text-xl md:text-2xl mb-10 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          Experienced <strong>Software Engineer</strong> with <strong>2+ years</strong> of expertise in developing enterprise-level applications using <strong>MERN stack</strong>, microservices architecture, and cloud technologies. Passionate about creating efficient, scalable solutions that drive business growth.
         </p>
-        <div className="hero-button flex justify-center space-x-4">
+        <div className="hero-button flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
           <Button
             size="lg"
             onClick={scrollToAbout}
-            className="bg-primary hover:bg-primary/90 text-white"
+            className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
           >
             Explore My Work
           </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() =>
+              window.open(
+                "https://drive.google.com/file/d/1XctzxwjDRSHeNqOX-v6zEIVp1ubnbfSy/view?usp=sharing",
+                "_blank"
+              )
+            }
+            className="px-8 py-6 text-lg border-2 hover:bg-primary/10 transition-all duration-300"
+          >
+            View Resume
+          </Button>
         </div>
 
-        <div
-          className="absolute bottom-24 md:bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
-          onClick={scrollToAbout}
-        >
-          <ArrowDown className="scroll-arrow h-8 w-8 text-primary" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto mb-12">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary mb-1">2+</div>
+            <div className="text-sm text-muted-foreground">Years Experience</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary mb-1">10+</div>
+            <div className="text-sm text-muted-foreground">Projects Delivered</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary mb-1">5+</div>
+            <div className="text-sm text-muted-foreground">Technologies</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary mb-1">100%</div>
+            <div className="text-sm text-muted-foreground">Dedication</div>
+          </div>
         </div>
       </div>
     </section>

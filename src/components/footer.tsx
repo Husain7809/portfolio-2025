@@ -14,14 +14,15 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-muted/50 border-t border-border py-6 md:py-8 mb-16 md:mb-0">
+    <footer className="bg-gradient-to-b from-muted/50 to-muted/80 border-t-2 border-border py-8 md:py-10 mb-16 md:mb-0">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="footer-content flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-lg font-semibold text-primary">
+        <div className="footer-content flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+          <div className="text-center md:text-left">
+            <p className="text-xl font-bold text-primary mb-1">
               Mohammad Husain
             </p>
-            <p className="text-sm text-muted-foreground">Software Engineer</p>
+            <p className="text-base text-muted-foreground font-medium">Software Engineer | Full-Stack Developer</p>
+            <p className="text-sm text-muted-foreground mt-2">Building scalable solutions for modern businesses</p>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -29,33 +30,33 @@ export default function Footer() {
               href="https://www.linkedin.com/in/mohammad-husain-b23167206/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-muted transition-colors"
-              aria-label="LinkedIn"
+              className="p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-all duration-300 hover:scale-110"
+              aria-label="LinkedIn Profile"
             >
-              <Linkedin className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
+              <Linkedin className="h-6 w-6 text-primary" />
             </a>
             <a
               href="https://github.com/husain7809"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full hover:bg-muted transition-colors"
-              aria-label="GitHub"
+              className="p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-all duration-300 hover:scale-110"
+              aria-label="GitHub Profile"
             >
-              <Github className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
+              <Github className="h-6 w-6 text-primary" />
             </a>
             <a
               href="mailto:mh.varaliya@gmail.com"
-              className="p-2 rounded-full hover:bg-muted transition-colors"
-              aria-label="Email"
+              className="p-3 rounded-full bg-primary/10 hover:bg-primary/20 transition-all duration-300 hover:scale-110"
+              aria-label="Email Contact"
             >
-              <Mail className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
+              <Mail className="h-6 w-6 text-primary" />
             </a>
           </div>
         </div>
 
-        <div className="footer-content mt-4 md:mt-6 text-center">
+        <div className="footer-content pt-6 border-t border-border text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Mohammad Husain. All rights reserved.
+            © {new Date().getFullYear()} Mohammad Husain. All rights reserved. | Crafted with attention to detail and professional excellence.
           </p>
         </div>
       </div>
