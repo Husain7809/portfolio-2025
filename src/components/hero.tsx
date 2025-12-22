@@ -72,7 +72,11 @@ export default function Hero() {
           Building Scalable Solutions for Modern Businesses
         </h2>
         <p className="hero-description text-lg sm:text-xl md:text-2xl mb-10 text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Experienced <strong>Software Engineer</strong> with <strong>2+ years</strong> of expertise in developing enterprise-level applications using <strong>MERN stack</strong>, microservices architecture, and cloud technologies. Passionate about creating efficient, scalable solutions that drive business growth.
+          Experienced <strong>Software Engineer</strong> with{" "}
+          <strong>2+ years</strong> of expertise in developing enterprise-level
+          applications using <strong>MERN stack</strong>, microservices
+          architecture, and cloud technologies. Passionate about creating
+          efficient, scalable solutions that drive business growth.
         </p>
         <div className="hero-button flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
           <Button
@@ -87,7 +91,7 @@ export default function Hero() {
             variant="outline"
             onClick={() =>
               window.open(
-                "https://drive.google.com/file/d/1XctzxwjDRSHeNqOX-v6zEIVp1ubnbfSy/view?usp=sharing",
+                "https://drive.google.com/file/d/1SKpJViiYqqBAtr6ikQzVBS-EAJfuh239/view?usp=sharing",
                 "_blank"
               )
             }
@@ -100,11 +104,15 @@ export default function Hero() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto mb-12">
           <div className="text-center">
             <div className="text-3xl font-bold text-primary mb-1">2+</div>
-            <div className="text-sm text-muted-foreground">Years Experience</div>
+            <div className="text-sm text-muted-foreground">
+              Years Experience
+            </div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-primary mb-1">10+</div>
-            <div className="text-sm text-muted-foreground">Projects Delivered</div>
+            <div className="text-sm text-muted-foreground">
+              Projects Delivered
+            </div>
           </div>
           <div className="text-center">
             <div className="text-3xl font-bold text-primary mb-1">5+</div>
