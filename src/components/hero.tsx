@@ -91,7 +91,7 @@ export default function Hero() {
             variant="outline"
             onClick={() =>
               window.open(
-                "https://drive.google.com/file/d/1SKpJViiYqqBAtr6ikQzVBS-EAJfuh239/view?usp=sharing",
+                "https://drive.google.com/file/d/1KHKFsstzrxXh0nXK0pnKyLY4nhy7AJlc/view?usp=sharing",
                 "_blank"
               )
             }
