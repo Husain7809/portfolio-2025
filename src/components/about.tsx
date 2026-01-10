@@ -131,7 +131,7 @@ export default function About() {
                 className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() =>
                   window.open(
-                    "https://drive.google.com/file/d/1XctzxwjDRSHeNqOX-v6zEIVp1ubnbfSy/view?usp=sharing",
+                    "https://drive.google.com/file/d/1KHKFsstzrxXh0nXK0pnKyLY4nhy7AJlc/view?usp=sharing",
                     "_blank"
                   )
                 }

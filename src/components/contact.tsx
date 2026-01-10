@@ -109,7 +109,7 @@ export default function Contact() {
             Open to new opportunities and collaborations. Let's discuss how I can contribute to your team.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="justify-center items-center">
             <Card className="animate-item border-2 border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-primary/50">
               <CardHeader className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-b border-border">
                 <CardTitle className="text-2xl">Contact Information</CardTitle>
@@ -171,7 +171,7 @@ export default function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="animate-item border-2 border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-primary/50">
+            {/* <Card className="animate-item border-2 border-border shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-primary/50">
               <CardHeader className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-b border-border">
                 <CardTitle className="text-2xl">Send a Message</CardTitle>
                 <CardDescription className="text-base">
@@ -276,7 +276,7 @@ export default function Contact() {
                   </Button>
                 </form>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </div>
