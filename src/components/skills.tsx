@@ -76,16 +76,21 @@ export default function Skills() {
     if (categories) {
       gsap.fromTo(
         categories,
-        { y: 50, opacity: 0 },
+        { 
+          y: 40, 
+          opacity: 0,
+          rotateX: -15
+        },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "power2.out",
+          rotateX: 0,
+          stagger: 0.1,
+          duration: 1,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: skillsRef.current,
-            start: "top 80%",
+            start: "top 75%",
             toggleActions: "play none none none",
           },
         }
@@ -97,16 +102,22 @@ export default function Skills() {
     if (badges) {
       gsap.fromTo(
         badges,
-        { scale: 0.8, opacity: 0 },
+        { 
+          scale: 0,
+          opacity: 0 
+        },
         {
           scale: 1,
           opacity: 1,
-          stagger: 0.05,
-          duration: 0.5,
-          ease: "back.out(1.7)",
+          stagger: {
+            each: 0.02,
+            from: "random"
+          },
+          duration: 0.6,
+          ease: "back.out(2)",
           scrollTrigger: {
             trigger: skillsRef.current,
-            start: "top 70%",
+            start: "top 60%",
             toggleActions: "play none none none",
           },
         }
@@ -118,18 +129,18 @@ export default function Skills() {
     <section id="skills" ref={skillsRef} className="section py-24 bg-gradient-to-b from-muted/30 to-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-emerald-400 text-transparent bg-clip-text">
             Technical Expertise
           </h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">
             A comprehensive toolkit for building modern, scalable applications
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {skillCategories.map((category, index) => (
               <div
                 key={index}
-                className="skill-category bg-card p-8 rounded-xl border-2 border-border shadow-lg hover:shadow-xl hover:border-primary/50 transition-all duration-300 group"
+                className="skill-category bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-border shadow-md hover:shadow-xl hover:border-primary/50 transition-all duration-500 group perspective-1000"
               >
                 <h3 className="text-2xl font-bold mb-6 text-primary group-hover:scale-105 transition-transform">
                   {category.name}

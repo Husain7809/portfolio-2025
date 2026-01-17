@@ -36,13 +36,18 @@ export default function Contact() {
     if (elements) {
       gsap.fromTo(
         elements,
-        { y: 50, opacity: 0 },
+        { 
+          y: 40, 
+          opacity: 0,
+          scale: 0.95
+        },
         {
           y: 0,
           opacity: 1,
+          scale: 1,
           stagger: 0.2,
-          duration: 0.8,
-          ease: "power2.out",
+          duration: 1,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: contactRef.current,
             start: "top 80%",

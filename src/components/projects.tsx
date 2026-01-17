@@ -114,13 +114,18 @@ export default function Projects() {
     if (projectCards) {
       gsap.fromTo(
         projectCards,
-        { y: 100, opacity: 0 },
+        { 
+          y: 100, 
+          opacity: 0,
+          scale: 0.9
+        },
         {
           y: 0,
           opacity: 1,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "power2.out",
+          scale: 1,
+          stagger: 0.3,
+          duration: 1.2,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: projectsRef.current,
             start: "top 70%",
@@ -128,6 +133,41 @@ export default function Projects() {
           },
         }
       );
+
+      // Mouse move tilt effect
+      projectCards.forEach((card) => {
+        const cardEl = card as HTMLElement;
+        cardEl.addEventListener("mousemove", (e) => {
+          const rect = cardEl.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+          
+          gsap.to(cardEl, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: 1.02,
+            duration: 0.5,
+            ease: "power3.out",
+            transformPerspective: 1000
+          });
+        });
+        
+        cardEl.addEventListener("mouseleave", () => {
+          gsap.to(cardEl, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.5,
+            ease: "power3.out"
+          });
+        });
+      });
     }
   }, []);
 
@@ -135,7 +175,7 @@ export default function Projects() {
     <section id="projects" ref={projectsRef} className="section py-24 bg-gradient-to-b from-background to-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-emerald-400 text-transparent bg-clip-text">
             Featured Projects
           </h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">

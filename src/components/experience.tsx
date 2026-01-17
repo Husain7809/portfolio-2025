@@ -88,21 +88,39 @@ export default function Experience() {
     if (experienceCards) {
       gsap.fromTo(
         experienceCards,
-        { y: 50, opacity: 0 },
+        { 
+          x: (i) => i % 2 === 0 ? -50 : 50,
+          opacity: 0 
+        },
         {
-          y: 0,
+          x: 0,
           opacity: 1,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: "power2.out",
+          stagger: 0.3,
+          duration: 1,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: experienceRef.current,
-            start: "top 80%",
+            start: "top 75%",
             toggleActions: "play none none none",
           },
         }
       );
     }
+
+    // Timeline line animation
+    gsap.fromTo(".timeline-line", 
+      { scaleY: 0 },
+      { 
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".experience-container",
+          start: "top 70%",
+          end: "bottom 70%",
+          scrub: true
+        }
+      }
+    );
 
     const listItems = experienceRef.current?.querySelectorAll(
       ".responsibility-item"
@@ -136,77 +154,80 @@ export default function Experience() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-purple-600 text-transparent bg-clip-text">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center bg-gradient-to-r from-primary to-emerald-400 text-transparent bg-clip-text">
             Professional Experience
           </h2>
           <p className="text-center text-muted-foreground mb-16 text-lg">
             Building enterprise solutions and driving technical excellence
           </p>
 
-          <div className="space-y-8">
+          <div className="experience-container relative space-y-12">
+            <div className="timeline-line absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-emerald-400 to-transparent origin-top hidden md:block"></div>
             {experiences.map((exp, index) => (
-              <Card key={index} className="experience-card border-2 border-border hover:border-primary/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                <CardHeader className="bg-gradient-to-r from-primary/5 to-purple-500/5 border-b border-border">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-                    <div>
-                      <CardTitle className="text-2xl md:text-3xl mb-2">{exp.role}</CardTitle>
-                      <CardDescription className="text-xl font-semibold text-primary">
-                        {exp.company}
-                      </CardDescription>
-                    </div>
+              <div key={index} className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+                <div className="md:w-1/2">
+                  <Card className="experience-card border-2 border-border hover:border-primary/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+                    <CardHeader className="bg-gradient-to-r from-primary/5 to-emerald-500/5 border-b border-border">
+                      <div className="flex flex-col gap-4">
+                        <div>
+                          <CardTitle className="text-2xl md:text-3xl mb-2">{exp.role}</CardTitle>
+                          <CardDescription className="text-xl font-semibold text-primary">
+                            {exp.company}
+                          </CardDescription>
+                        </div>
 
-                    <div className="space-y-3 bg-card/50 rounded-lg p-4 border border-border">
-                      <div className="flex items-center gap-2 text-sm font-medium">
-                        <CalendarDays className="h-5 w-5 text-primary" />
-                        <span>{exp.period}</span>
+                        <div className="flex flex-wrap gap-4 text-sm font-medium">
+                          <div className="flex items-center gap-2">
+                            <CalendarDays className="h-4 w-4 text-primary" />
+                            <span>{exp.period}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="h-4 w-4 text-primary" />
+                            <span>{exp.location}</span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 text-sm font-medium">
-                        <MapPin className="h-5 w-5 text-primary" />
-                        <span>{exp.location}</span>
+                    </CardHeader>
+
+                    <CardContent className="p-6 space-y-6">
+                      <p className="text-foreground leading-relaxed">{exp.description}</p>
+
+                      <div>
+                        <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                          <span className="w-1 h-5 bg-primary rounded-full"></span>
+                          Key Contributions
+                        </h4>
+                        <ul className="space-y-2">
+                          {exp.responsibilities.slice(0, 4).map((resp, respIndex) => (
+                            <li
+                              key={respIndex}
+                              className="responsibility-item flex items-start gap-3 text-sm"
+                            >
+                              <span className="text-primary font-bold">▸</span>
+                              <span className="text-muted-foreground leading-relaxed">{resp}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    </div>
-                  </div>
-                </CardHeader>
 
-                <CardContent className="p-8 space-y-8">
-                  <p className="text-lg text-foreground leading-relaxed font-medium">{exp.description}</p>
-
-                  <div>
-                    <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                      <span className="w-1 h-6 bg-primary rounded-full"></span>
-                      Key Achievements & Responsibilities
-                    </h4>
-                    <ul className="space-y-3">
-                      {exp.responsibilities.map((resp, respIndex) => (
-                        <li
-                          key={respIndex}
-                          className="responsibility-item flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-                        >
-                          <span className="text-primary mt-1.5 font-bold text-lg">▸</span>
-                          <span className="text-foreground leading-relaxed">{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                      <span className="w-1 h-6 bg-primary rounded-full"></span>
-                      Core Technologies & Tools
-                    </h4>
-                    <div className="flex flex-wrap gap-3">
-                      {exp.skills.map((skill, skillIndex) => (
-                        <Badge
-                          key={skillIndex}
-                          className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-4 py-2 text-sm font-medium"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.skills.map((skill, skillIndex) => (
+                          <Badge
+                            key={skillIndex}
+                            variant="secondary"
+                            className="bg-primary/5 text-primary border-primary/10"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                <div className="hidden md:flex md:w-1/2 items-center justify-center">
+                  <div className="w-4 h-4 rounded-full bg-primary border-4 border-background shadow-[0_0_0_4px_rgba(var(--primary),0.2)] z-10"></div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

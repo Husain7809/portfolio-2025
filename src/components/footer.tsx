@@ -2,14 +2,27 @@
 
 import { useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     gsap.fromTo(
       ".footer-content",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
+      { y: 30, opacity: 0 },
+      { 
+        y: 0, 
+        opacity: 1, 
+        duration: 1, 
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".footer-content",
+          start: "top 95%",
+        }
+      }
     );
   }, []);
 

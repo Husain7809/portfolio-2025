@@ -19,39 +19,22 @@ export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initialize animations
-    const sections = gsap.utils.toArray<HTMLElement>(".section");
-
-    sections.forEach((section) => {
-      gsap.fromTo(
-        section,
-        {
-          y: 50,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    });
-
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   return (
-    <div ref={mainRef} className="min-h-[calc(100vh-3.75rem)] bg-background">
+    <div ref={mainRef} className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background blobs */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-500/5 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute top-[30%] right-[10%] w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[100px]" />
+      </div>
+
       <Navbar />
-      <main className="w-full">
+      <main className="w-full relative z-10">
         <Hero />
         <About />
         <Experience />
