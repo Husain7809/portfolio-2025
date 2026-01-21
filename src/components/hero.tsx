@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { RESUME_LINK } from "@/lib/constant";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -129,7 +130,7 @@ export default function Hero() {
             variant="outline"
             onClick={() =>
               window.open(
-                "https://drive.google.com/file/d/14c7kyjcJRnM0LsM6WphFVBeUxbYbFI2z/view?usp=sharing",
+                RESUME_LINK,
                 "_blank"
               )
             }

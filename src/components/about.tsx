@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
 import { FileDown, Award, Target, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { RESUME_LINK } from "@/lib/constant";
 
 export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -163,7 +164,7 @@ export default function About() {
                 className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() =>
                   window.open(
-                    "https://drive.google.com/file/d/14c7kyjcJRnM0LsM6WphFVBeUxbYbFI2z/view?usp=sharing",
+                    RESUME_LINK,
                     "_blank"
                   )
                 }
